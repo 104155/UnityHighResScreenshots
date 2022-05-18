@@ -1,5 +1,7 @@
 public class Screenshot : MonoBehaviour {
 	[SerializeField]
+	private string _fielName;
+	[SerializeField]
 	private string _path;
 	[SerializeField]
 	[Range(1, 5)]
@@ -8,8 +10,9 @@ public class Screenshot : MonoBehaviour {
 	//Update is called once per frame
 	private void Update() {
 		if(Input.GetKeyDown(KeyCode.K))  {
-			_path += "screenshot ";
-			_path += System.Giud.NewGuid().ToString() + ".png";
+			_path += _fileName;
+			//_path += System.Giud.NewGuid().ToString() + ".png";
+			_path += ".png";
 
 			ScreenCapture.CaptureScreenshot(_path, _size);
 		}
