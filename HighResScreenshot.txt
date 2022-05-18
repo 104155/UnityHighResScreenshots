@@ -1,0 +1,17 @@
+public class Screenshot : MonoBehaviour {
+	[SerializeField]
+	private string _path;
+	[SerializeField]
+	[Range(1, 5)]
+	private int _size = 1; //Size is a multiplier 2 = 4K, 3 = 6K, 4 = 8K
+
+	//Update is called once per frame
+	private void Update() {
+		if(Input.GetKeyDown(KeyCode.K))  {
+			_path += "screenshot ";
+			_path += System.Giud.NewGuid().ToString() + ".png";
+
+			ScreenCapture.CaptureScreenshot(_path, _size);
+		}
+	}
+}
